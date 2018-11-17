@@ -1,0 +1,60 @@
+Oracle enterprise V.12
+toad IDE
+Las BD Oracle son BD para empresas Corporativas (GRANDES)
+Costo ALTO
+$75000 dolares por microprosesador
+
+Memoria
+Microprosesadores
+consultas
+Tiempo
+
+10 estructuras de tabla diferentes
+Al elegir un tipo de tabla, estoy escogiendo un diseño de tabla adecuado para el proyecto
+Tablas Clasterizadas
+Tablas Index
+-Tablas Particionadas-
+
+
+Ejemplo:
+las tablas que generan mas informacion en un supermercado
+VENTAS
+ALMACENES
+FINANZAS
+
+
+una bd requiere ORDEN, para consumir menos recursos y hacer consultas mas rapidas y eficientes.
+Al no haber orden se desvanece el performance (calidad) de mi BD.
+
+En ORACLE El area de almacenamiento son los TABLESPACE, 
+
+SELECT * FROM ventas WHERE origen= 2 busca a lo loco porque no hay orden.
+Pero cuando son mas de 100000000 de registros entonces si se ve afectado el performance de la BD.
+
+
+TABLAS PARTICIONADAS
+TRABAJAN ORDENADAS usa otro tipo de SELECT
+ Ejemplo
+entidad "ventas"
+y creamos los tablespace por pais:
+TBS_col
+TBS_esa
+TBS_peru
+TBS_mex
+TBS_otros
+
+El objeto ventas tiene sus componentes: id, origen, fecha, etc. 
+ahora bien si en el ORIGEN esta el texto: col, peru, ecu, esa, mex eso determinará a que TBS pertenecerá el comprobante ventas.
+Esto es la mejor manera de almacenar datos grandes
+
+
+-Revisa tu diseño de BD
+-Revisa tus sentencias SQL
+
+El campo que me permitira pibotear en mis particiones sera ORIGEN
+
+oracle trabaja de manera Asincrona siempre tendre lo mas fresco en memoria
+COMMIT no obliga a que la bd se guarde en disco.
+
+Entre mas segmentada la bd mas rapida la consulta.
+El maximo de particiones permitidas son 15.
